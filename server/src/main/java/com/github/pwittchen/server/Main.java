@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 //TODO #1 apply RxJava2
 //TODO #2 create REST server
 //TODO #3 log sensor events
+
 public class Main {
   private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
