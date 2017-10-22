@@ -1,5 +1,18 @@
-# reactive-client-server
+reactive-client-server
+======================
 An example of reactive client and server apps written with Java 9, RxJava 2, Vert.x (on server) and Android with Java 7 (on client) for "Hack Your Career" presentation at Silesian University of Technology.
+
+Project structure
+-----------------
+### server
+
+to build and run the server execute the following command:
+
+```
+cd server/ && ./server.sh
+```
+
+### client
 
 References
 ----------
