@@ -14,5 +14,7 @@ References
   - http://vertx.io/docs/vertx-rx/java2/
   - http://vertx.io/blog/some-rest-with-vert-x/
   - http://vertx.io/docs/vertx-web/java/
-- RxAndroid
+- Android
+  - https://developer.android.com
   - https://github.com/ReactiveX/RxAndroid
+  - http://square.github.io/retrofit/
