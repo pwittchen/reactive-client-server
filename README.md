@@ -5,6 +5,7 @@ References
 ----------
 - RxJava
   - https://github.com/ReactiveX/RxJava
+  - https://github.com/ReactiveX/RxJava/wiki
   - http://reactivex.io/
   - http://rxmarbles.com/
   - https://www.reactivemanifesto.org/
