@@ -5,6 +5,7 @@ References
 ----------
 - http://vertx.io/
 - http://vertx.io/docs/vertx-rx/java2/
+- http://vertx.io/blog/some-rest-with-vert-x/
 - https://github.com/ReactiveX/RxJava
 - http://reactivex.io/
 - http://rxmarbles.com/
