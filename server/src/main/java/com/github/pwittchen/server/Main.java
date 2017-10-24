@@ -8,6 +8,7 @@ import io.vertx.reactivex.core.http.HttpServer;
 import io.vertx.reactivex.core.http.HttpServerRequest;
 import io.vertx.reactivex.core.http.HttpServerResponse;
 import io.vertx.reactivex.ext.web.Router;
+import io.vertx.reactivex.ext.web.handler.BodyHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,15 +24,29 @@ public class Main {
 
     Vertx vertx = Vertx.vertx();
     Router router = Router.router(vertx);
+    router.route().handler(BodyHandler.create());
 
     router.route("/").method(HttpMethod.GET).handler(routingContext -> {
           HttpServerRequest request = routingContext.request();
           logger.info("{} {} {}", request.host(), request.method().name(), request.uri());
+
           request
               .response()
               .setChunked(true)
-              .putHeader("content-type", "text/html")
-              .end("hello from Vertx");
+              .putHeader("content-type", "text/plain")
+              .end("hello from vertx");
+        }
+    );
+
+    router.route("/sensor/add").method(HttpMethod.POST).handler(routingContext -> {
+          HttpServerRequest request = routingContext.request();
+          logger.info("{}", routingContext.getBodyAsString());
+
+          request
+              .response()
+              .setChunked(true)
+              .putHeader("content-type", "text/plain")
+              .end("sensor reading received");
         }
     );
 
