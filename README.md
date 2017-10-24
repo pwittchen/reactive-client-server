@@ -6,7 +6,7 @@ Project structure
 -----------------
 ### server
 
-to build and run the server execute the following command:
+to build and run the server, execute the following command:
 
 ```
 cd server/ && ./server.sh
