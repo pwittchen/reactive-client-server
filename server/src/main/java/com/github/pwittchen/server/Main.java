@@ -1,6 +1,13 @@
 package com.github.pwittchen.server;
 
-import io.vertx.core.Vertx;
+import io.reactivex.functions.Consumer;
+import io.vertx.core.http.HttpMethod;
+import io.vertx.reactivex.core.Vertx;
+import io.vertx.reactivex.core.buffer.Buffer;
+import io.vertx.reactivex.core.http.HttpServer;
+import io.vertx.reactivex.core.http.HttpServerRequest;
+import io.vertx.reactivex.core.http.HttpServerResponse;
+import io.vertx.reactivex.ext.web.Router;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,18 +19,40 @@ public class Main {
   private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
   public static void main(String args[]) {
-    Vertx.vertx()
-        .createHttpServer()
-        .requestHandler(req -> {
-          req.response().end("Hello from Vert.x");
-          logger.info("{} {} {}", req.host(), req.method().name(), req.uri());
-        })
-        .listen(8080, handler -> {
-          if (handler.succeeded()) {
-            logger.info("server is running at http://localhost:8080");
-          } else {
-            logger.info("Failed to listen on port 8080");
-          }
-        });
+    //HttpServer server = Vertx.vertx().createHttpServer();
+
+    Vertx vertx = Vertx.vertx();
+    Router router = Router.router(vertx);
+
+    router.route("/").method(HttpMethod.GET).handler(routingContext -> {
+          HttpServerRequest request = routingContext.request();
+          logger.info("{} {} {}", request.host(), request.method().name(), request.uri());
+          request
+              .response()
+              .setChunked(true)
+              .putHeader("content-type", "text/html")
+              .end("hello from Vertx");
+        }
+    );
+
+    HttpServer httpServer = vertx.createHttpServer();
+    httpServer.requestHandler(router::accept).listen(8080);
+
+    //server
+    //    .requestStream()
+    //    .toObservable()
+    //    .subscribe(request -> {
+    //      HttpServerResponse response = request.response();
+    //      response.setChunked(true);
+    //      logger.info("{} {} {}", request.host(), request.method().name(), request.uri());
+    //      request
+    //          .toObservable()
+    //          .subscribe(buffer ->
+    //              response
+    //                  .putHeader("content-type", "text/html")
+    //                  .end("hello from Vertx"));
+    //    });
+
+    //server.listen(8080);
   }
 }
