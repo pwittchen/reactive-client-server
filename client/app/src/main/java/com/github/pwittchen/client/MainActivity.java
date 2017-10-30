@@ -43,11 +43,12 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @OnClick(R.id.btn_send_message) public void createSubscription() {
-    sendRequest() //
+    performRequest() //
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new CompletableObserver() {
           @Override public void onSubscribe(Disposable d) {
+            Log.d(TAG, "subscription started");
           }
 
           @Override public void onComplete() {
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         });
   }
 
-  private Completable sendRequest() {
+  private Completable performRequest() {
     return Completable.create(emitter -> client.newCall(createRequest()).enqueue(new Callback() {
       @Override public void onFailure(@NonNull Call c, @NonNull IOException e) {
         emitter.onError(e);
