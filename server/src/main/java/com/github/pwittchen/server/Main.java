@@ -9,8 +9,9 @@ public class Main {
   private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
   /**
-   * Starts Vert.x server and waits for the requests an exemplary request: curl
-   * "localhost:8080/sensor?reading=123,456,789"
+   * Starts Vert.x server and waits for the requests an exemplary request:
+   *
+   * curl "localhost:8080/sensor?reading=123,456,789"
    */
   public static void main(String args[]) {
     HttpServer server = Vertx

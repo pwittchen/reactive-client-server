@@ -15,19 +15,12 @@ repositories {
 
 dependencies {
   // vertx
-//  compile 'io.vertx:vertx-core:3.5.0'
   compile 'io.vertx:vertx-rx-java2:3.5.0'
-  compile 'io.vertx:vertx-web:3.5.0'
 
   // logging
   compile 'org.slf4j:slf4j-api:1.7.2'
   runtime 'org.slf4j:slf4j-jdk14:1.7.7'
   compile 'ch.qos.logback:logback-classic:1.2.3'
-
-  // testing
-  testCompile 'junit:junit:4.12'
-  testCompile 'com.google.truth:truth:0.34'
-  testCompile 'org.mockito:mockito-core:2.8.47'
 }
 
 shadowJar {
