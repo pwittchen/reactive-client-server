@@ -9,7 +9,7 @@ public class Main {
   private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
   public static void main(String args[]) {
-    // exemplary curl request: curl "localhost:8080/sensor?add=123,456,789"
+    // exemplary curl request: curl "localhost:8080/sensor?reading=123,456,789"
 
     HttpServer server = Vertx
         .vertx()
