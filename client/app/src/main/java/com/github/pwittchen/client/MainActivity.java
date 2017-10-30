@@ -24,9 +24,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+//TODO: add reactive sensors library and integrate sensors stream with the request stream
 public class MainActivity extends AppCompatActivity {
-  private final static String TAG = "MainActivity";
   private final static String EMPTY = "";
+  private final static String TAG = "MainActivity";
   private final static String URL = "http://10.0.2.2:8080/";
   private final static String PATH = "sensor?reading=";
   private final static MediaType TEXT = MediaType.parse("text/plain; charset=utf-8");
@@ -63,12 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
   private Completable sendRequest() {
     return Completable.create(emitter -> client.newCall(createRequest()).enqueue(new Callback() {
-      @Override public void onFailure(@NonNull Call call, @NonNull IOException exception) {
-        emitter.onError(exception);
+      @Override public void onFailure(@NonNull Call c, @NonNull IOException e) {
+        emitter.onError(e);
       }
 
-      @Override public void onResponse(@NonNull Call call, @NonNull Response response)
-          throws IOException {
+      @Override public void onResponse(@NonNull Call c, @NonNull Response r) throws IOException {
         emitter.onComplete();
       }
     }));
