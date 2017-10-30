@@ -24,6 +24,13 @@ to build client and install it on the connected Android device or emulator, exec
 cd client/ && ./gradlew build installDebug
 ```
 
+Code style
+----------
+
+- Code style used by server is called `Square`
+- Code style used by client is called `SquareAndroid`
+- Java Code Styles repository by Square is available at: https://github.com/square/java-code-styles.
+
 References
 ----------
 - RxJava
