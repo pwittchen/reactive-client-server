@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private Request createRequest() {
-    final RequestBody body = RequestBody.create(TEXT, EMPTY);
     final String url = URL.concat(PATH).concat("123,456,789");
+    final RequestBody body = RequestBody.create(TEXT, EMPTY);
     return new Request.Builder().url(url).post(body).build();
   }
 
