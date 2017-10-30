@@ -1,10 +1,12 @@
 reactive-client-server
 ======================
-An example of reactive client and server apps written with Java 9, RxJava 2, Vert.x (on server) and Android (on client) for "Hack Your Career" presentation at Silesian University of Technology.
+An example of reactive client and server apps for "Hack Your Career" presentation at Silesian University of Technology.
 
 Project structure
 -----------------
 ### server
+
+uses Java 9, Gradle, RxJava 2, Vert.x (Core and Rx)
 
 to build and run the server, execute the following command:
 
@@ -14,7 +16,9 @@ cd server/ && ./server.sh
 
 ### client
 
-to build client and install it on the connected device or emulator, execute the following command:
+uses Java 7, Gradle, RxJava 2, OkHttp 3, Retrolambda, ReactiveSensors
+
+to build client and install it on the connected Android device or emulator, execute the following command:
 
 ```
 cd client/ && ./gradlew build installDebug
