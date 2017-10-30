@@ -14,7 +14,11 @@ cd server/ && ./server.sh
 
 ### client
 
-TBD.
+to build client and install it on the connected device or emulator, execute the following command:
+
+```
+cd client/ && ./gradlew build installDebug
+``
 
 References
 ----------
