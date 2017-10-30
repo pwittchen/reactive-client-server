@@ -16,7 +16,7 @@ cd server/ && ./server.sh
 
 ### client
 
-uses Java 7, Gradle, Android, RxJava 2, OkHttp 3, Retrolambda, ReactiveSensors
+uses Java 7, Gradle, Android, RxJava 2, OkHttp 3, ButterKnife, Retrolambda, ReactiveSensors
 
 to build client and install it on the connected Android device or emulator, execute the following command:
 

@@ -2,10 +2,14 @@ package com.github.pwittchen.client;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.Completable;
 import io.reactivex.CompletableObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,14 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
   private final Call.Factory client = new OkHttpClient();
 
+  @BindView(R.id.cl_main) ConstraintLayout mainLayout;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    findViewById(R.id.btn_send_message).setOnClickListener(view -> createSubscription());
+    ButterKnife.bind(this);
   }
 
-  private void createSubscription() {
-    sendRequest().subscribeOn(Schedulers.io())
+  @OnClick(R.id.btn_send_message) public void createSubscription() {
+    sendRequest() //
+        .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new CompletableObserver() {
           @Override public void onSubscribe(Disposable d) {
@@ -74,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void showSnackBar(String message) {
-    Snackbar.make(findViewById(R.id.cl_main), message, BaseTransientBottomBar.LENGTH_SHORT).show();
+    Snackbar.make(mainLayout, message, BaseTransientBottomBar.LENGTH_SHORT).show();
   }
 }
