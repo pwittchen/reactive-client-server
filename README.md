@@ -18,7 +18,7 @@ to build client and install it on the connected device or emulator, execute the 
 
 ```
 cd client/ && ./gradlew build installDebug
-``
+```
 
 References
 ----------
