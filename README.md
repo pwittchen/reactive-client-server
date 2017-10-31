@@ -6,7 +6,7 @@ Project structure
 -----------------
 ### server
 
-uses Java 8, Gradle, RxJava 2, Vert.x (Core and Rx)
+uses Java 8, Gradle, RxJava 2, Vert.x (Core and Rx), Logback
 
 to build and run the server, execute the following command:
 
