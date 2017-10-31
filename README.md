@@ -49,3 +49,5 @@ References
   - https://developer.android.com
   - https://github.com/ReactiveX/RxAndroid
   - http://square.github.io/retrofit/
+  - http://square.github.io/okhttp/
+  - https://github.com/pwittchen/ReactiveSensors
