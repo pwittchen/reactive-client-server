@@ -18,6 +18,7 @@ import io.reactivex.Completable;
 import io.reactivex.CompletableObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import java.io.IOException;
 import java.util.Locale;
@@ -57,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
         .onBackpressureDrop()
         .filter(ReactiveSensorFilter.filterSensorChanged())
         .throttleLast(1, TimeUnit.SECONDS)
+        .map(this::getSensorReading)
         .doOnNext(event -> {
-          performRequest(getSensorReading(event)) //
+          performRequest(event) //
               .subscribeOn(Schedulers.io()) //
               .subscribe(new CompletableObserver() {
                 @Override public void onSubscribe(Disposable d) {
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         })
         .subscribeOn(Schedulers.computation())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(event -> tvReadings.setText(getSensorReading(event)));
+        .subscribe(event -> tvReadings.setText(event));
   }
 
   private String getSensorReading(ReactiveSensorEvent reactiveSensorEvent) {
