@@ -40,10 +40,8 @@ dependencies {
   // http client
   implementation 'com.squareup.okhttp3:okhttp:3.9.0'
 
-  // rxjava
+  // rxjava and reactive libraries
   implementation 'io.reactivex.rxjava2:rxjava:2.1.6'
   implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-
-  //TODO: change it to maven dependency and remove *.aar file after the actual release
-  implementation(name:'reactivesensors-rx2-0.2.0', ext:'aar')
+  implementation 'com.github.pwittchen:reactivesensors-rx2:0.2.0'
 }
