@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    android:id="@+id/cl_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.github.pwittchen.client.MainActivity"
     >
 
-  <Button
-      android:id="@+id/btn_send_message"
+  <TextView
+      android:id="@+id/tv_readings"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/send_message"
+      android:paddingTop="10dp"
+      android:text="@string/waiting_for_readings"
+      android:textAlignment="center"
+      android:textSize="10pt"
+      />
+
+  <Button
+      android:id="@+id/btn_start_reading"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/start_reading_sensors"
+
       app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/tv_readings"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@id/tv_readings"
+      app:layout_constraintVertical_bias="0.447"
+      />
+
+  <Button
+      android:id="@+id/btn_stop_reading"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/stop_reading_sensors"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/tv_readings"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@id/tv_readings"
+      app:layout_constraintVertical_bias="0.533"
       />
 
 </android.support.constraint.ConstraintLayout>
