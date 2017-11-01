@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
   @OnClick(R.id.btn_stop_reading) public void stopReadingSensors() {
     safelyDisposeDisposable();
   }
-  
+
   private Completable performRequest(final String message) {
     return Completable.create(
         emitter -> client.newCall(createRequest(message)).enqueue(new Callback() {
