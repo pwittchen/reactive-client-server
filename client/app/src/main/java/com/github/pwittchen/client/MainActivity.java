@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -14,6 +15,7 @@ import com.github.pwittchen.reactivesensors.library.ReactiveSensorEvent;
 import com.github.pwittchen.reactivesensors.library.ReactiveSensorFilter;
 import com.github.pwittchen.reactivesensors.library.ReactiveSensors;
 import io.reactivex.Completable;
+import io.reactivex.CompletableObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -29,6 +31,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+  private final static String TAG = "MainActivity";
   private final static String EMPTY = "";
   // address of the localhost visible from device emulator
   private final static String URL = "http://10.0.2.2:8080/";
@@ -57,7 +60,19 @@ public class MainActivity extends AppCompatActivity {
         .doOnNext(event -> {
           performRequest(getSensorReading(event)) //
               .subscribeOn(Schedulers.io()) //
-              .subscribe();
+              .subscribe(new CompletableObserver() {
+                @Override public void onSubscribe(Disposable d) {
+                  Log.d(TAG, "HTTP request started");
+                }
+
+                @Override public void onComplete() {
+                  Log.d(TAG, "HTTP request completed");
+                }
+
+                @Override public void onError(Throwable e) {
+                  Log.d(TAG, "HTTP request had error: ".concat(e.getMessage()));
+                }
+              });
         })
         .subscribeOn(Schedulers.computation())
         .observeOn(AndroidSchedulers.mainThread())
