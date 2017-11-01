@@ -13,14 +13,15 @@ public class Main {
    *
    * curl "localhost:8080/sensor?reading=123,456,789"
    */
-  public static void main(String args[]) {
-    HttpServer server = Vertx
+  public static void main(final String args[]) {
+    final HttpServer server = Vertx
         .vertx()
         .createHttpServer();
 
     server
         .requestStream()
         .toFlowable()
+        .onBackpressureDrop()
         .subscribe(request -> {
           logger.info("{} {}", request.rawMethod(), request.absoluteURI());
           request.response().end("request received");
