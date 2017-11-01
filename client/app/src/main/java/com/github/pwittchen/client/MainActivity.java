@@ -29,6 +29,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+  private final static String TAG = "MainActivity";
   private final static String EMPTY = "";
   // address of the localhost visible from device emulator
   private final static String URL = "http://10.0.2.2:8080/";
@@ -50,18 +51,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @OnClick(R.id.btn_start_reading) public void startReadingSensors() {
-    disposable = reactiveSensors.observeSensor(Sensor.TYPE_ACCELEROMETER)
-        .onBackpressureDrop()
-        .filter(ReactiveSensorFilter.filterSensorChanged())
-        .throttleLast(1, TimeUnit.SECONDS)
-        .doOnNext(event -> {
-          performRequest(getSensorReading(event)) //
-              .subscribeOn(Schedulers.io()) //
-              .subscribe();
-        })
-        .subscribeOn(Schedulers.computation())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(event -> tvReadings.setText(getSensorReading(event)));
+    
   }
 
   private String getSensorReading(ReactiveSensorEvent reactiveSensorEvent) {
