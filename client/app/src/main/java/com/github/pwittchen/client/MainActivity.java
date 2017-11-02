@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @OnClick(R.id.btn_start_reading) public void startReadingSensors() {
-    
+
   }
 
   private String getSensorReading(ReactiveSensorEvent reactiveSensorEvent) {
