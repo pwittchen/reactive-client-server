@@ -59,23 +59,21 @@ public class MainActivity extends AppCompatActivity {
         .filter(ReactiveSensorFilter.filterSensorChanged())
         .throttleLast(1, TimeUnit.SECONDS)
         .map(this::getSensorReading)
-        .doOnNext(event -> {
-          performRequest(event) //
-              .subscribeOn(Schedulers.io()) //
-              .subscribe(new CompletableObserver() {
-                @Override public void onSubscribe(Disposable d) {
-                  Log.d(TAG, "HTTP request started");
-                }
+        .doOnNext(event -> performRequest(event)
+            .subscribeOn(Schedulers.io())
+            .subscribe(new CompletableObserver() {
+              @Override public void onSubscribe(Disposable d) {
+                Log.d(TAG, "HTTP request started");
+              }
 
-                @Override public void onComplete() {
-                  Log.d(TAG, "HTTP request completed");
-                }
+              @Override public void onComplete() {
+                Log.d(TAG, "HTTP request completed");
+              }
 
-                @Override public void onError(Throwable e) {
-                  Log.d(TAG, "HTTP request had error: ".concat(e.getMessage()));
-                }
-              });
-        })
+              @Override public void onError(Throwable e) {
+                Log.d(TAG, "HTTP request had error: ".concat(e.getMessage()));
+              }
+            }))
         .subscribeOn(Schedulers.computation())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(event -> tvReadings.setText(event));
