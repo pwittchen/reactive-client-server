@@ -1,6 +1,6 @@
 reactive-client-server
 ======================
-An example of reactive client and server apps for "Hack Your Career" presentation at Silesian University of Technology.
+An example of reactive client and server apps written for "Hack Your Career" presentation about Reactive Programming at Silesian University of Technology.
 
 Project structure
 -----------------
