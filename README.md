@@ -30,6 +30,11 @@ Code style
 - Code style used by server and client is called `Square`
 - Java Code Styles repository by Square is available at: https://github.com/square/java-code-styles
 
+Links
+-----
+- See Slides: https://speakerdeck.com/pwittchen/reactive-programming-efficient-server-applications
+- Read blog post: http://blog.wittchen.biz.pl/simple-reactive-http-client-server-with-rxjava-vertx-and-android/
+
 References
 ----------
 - RxJava
