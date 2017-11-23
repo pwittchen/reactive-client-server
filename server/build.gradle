@@ -6,7 +6,7 @@ plugins {
 }
 
 sourceCompatibility = 1.9
-mainClassName = 'com.github.pwittchen.server.Main'
+mainClassName = 'io.vertx.core.Launcher'
 
 repositories {
   mavenCentral()
@@ -25,6 +25,9 @@ dependencies {
 
 shadowJar {
   classifier = 'fat'
+  manifest {
+    attributes 'Main-Verticle': 'com.github.pwittchen.server.ServerVerticle'
+  }
   mergeServiceFiles {
     include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
   }
