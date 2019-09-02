@@ -33,7 +33,7 @@ Code style
 Links
 -----
 - See Slides: https://speakerdeck.com/pwittchen/reactive-programming-efficient-server-applications
-- Read blog post: http://wittchen.io/2017/11/09/simple-reactive-http-client-and-server-with-rxjava-vertx-and-android/
+- Read blog post: http://wittchen.io/simple-reactive-http-client-and-server-with-rxjava-vertx-and-android/
 
 References
 ----------
